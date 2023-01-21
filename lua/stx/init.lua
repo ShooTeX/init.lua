@@ -1,1 +1,3 @@
-print("Welcome, STX")
+vim.g.mapleader = " " --add remaps
+
+require("stx.lazy")
