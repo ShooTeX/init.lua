@@ -1,1 +1,1 @@
-return { "akinsho/nvim-bufferline.nvim", enabled = false }
+return { "akinsho/nvim-bufferline.lua", enabled = false }
