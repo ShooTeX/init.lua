@@ -34,7 +34,7 @@ return {
             },
           },
         },
-        ["rust_analyzer"] = {
+        rust_analyzer = {
           settings = {
             ["rust-analyzer"] = {
               extraArgs = { "+nightly" },
