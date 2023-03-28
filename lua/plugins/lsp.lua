@@ -22,6 +22,13 @@ return {
             },
           },
         },
+        tsserver = {
+          settings = {
+            completions = {
+              completeFunctionCalls = true,
+            },
+          },
+        },
         jsonls = {
           -- lazy-load schemastore when needed
           on_new_config = function(new_config)
