@@ -3,6 +3,24 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        eslint = {
+          settings = {
+            workingDirectory = { mode = "auto" },
+          },
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+            "markdown",
+            "mdx",
+            "vue",
+            "svelte",
+            "astro",
+          },
+        },
         rust_analyzer = {
           settings = {
             ["rust-analyzer"] = {
