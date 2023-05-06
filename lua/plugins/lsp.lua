@@ -40,6 +40,7 @@ return {
             },
           },
         },
+        ocamllsp = {},
       },
       setup = {
         eslint = function()
