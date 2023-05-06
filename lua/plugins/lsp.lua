@@ -40,7 +40,9 @@ return {
             },
           },
         },
-        ocamllsp = {},
+        ocamllsp = {
+          mason = false,
+        },
       },
       setup = {
         eslint = function()
