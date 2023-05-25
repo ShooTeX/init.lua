@@ -16,7 +16,6 @@ return {
             console = "integratedTerminal",
             skipFiles = { "<node_internals>/**" },
           },
-          require("mason-nvim-dap").default_setup(config),
         }
         require("mason-nvim-dap").default_setup(config)
       end,
