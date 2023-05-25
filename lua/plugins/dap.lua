@@ -1,5 +1,5 @@
 return {
-  "jay-baby/mason-nvim-dap.nvim",
+  "jay-babu/mason-nvim-dap.nvim",
   opts = {
     handlers = {
       function(config)
