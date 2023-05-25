@@ -11,6 +11,7 @@ return {
             name = "Debug SST Dev",
             type = "node2",
             request = "launch",
+            cwd = vim.fn.getcwd(),
             runtimeExecutable = "${workspaceRoot}/node_modules/.bin/sst",
             runtimeArgs = { "dev", "--increase-timeout" },
             console = "integratedTerminal",
