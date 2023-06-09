@@ -19,6 +19,9 @@ return {
             "vue",
             "svelte",
             "astro",
+            "html",
+            "css",
+            "scss",
           },
         },
         rust_analyzer = {
