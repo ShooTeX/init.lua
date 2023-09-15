@@ -47,7 +47,7 @@ return {
         angularls = {
           root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json"),
         },
-      }
+      },
       setup = {
         eslint = function()
           require("lazyvim.util").on_attach(function(client)
