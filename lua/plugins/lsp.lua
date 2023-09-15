@@ -58,15 +58,15 @@ return {
             end
           end)
         end,
-        -- angularls = function()
-        --   require("lazyvim.util").on_attach(function(client)
-        --     if client.name == "angularls" then
-        --       client.server_capabilities.renameProvider = true
-        --     elseif client.name == "tsserver" then
-        --       client.server_capabilities.renameProvider = false
-        --     end
-        --   end)
-        -- end,
+        angularls = function()
+          require("lazyvim.util").on_attach(function(client)
+            if client.name == "angularls" then
+              client.server_capabilities.renameProvider = true
+            elseif client.name == "tsserver" then
+              client.server_capabilities.renameProvider = false
+            end
+          end)
+        end,
       },
     },
   },
