@@ -45,7 +45,11 @@ return {
           mason = false,
         },
         angularls = {
-          root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json"),
+          settings = {
+            ["angularls"] = {
+              root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json"),
+            },
+          },
         },
       },
       setup = {
