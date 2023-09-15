@@ -44,6 +44,9 @@ return {
         ocamllsp = {
           mason = false,
         },
+        angularls = {
+          root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json"),
+        },
       },
       setup = {
         eslint = function()
