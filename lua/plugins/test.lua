@@ -1,7 +1,8 @@
 return {
   {
     "nvim-neotest/neotest-jest",
-    "andy-bell101/neotest-java",
+    "marilari88/neotest-vitest",
+    -- "andy-bell101/neotest-java",
   },
   {
     "nvim-neotest/neotest",
