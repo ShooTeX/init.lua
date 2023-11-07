@@ -8,7 +8,8 @@ return {
     opts = {
       adapters = {
         "neotest-jest",
-        "neotest-java",
+        "neotest-vitest",
+        -- "neotest-java",
       },
     },
   },
