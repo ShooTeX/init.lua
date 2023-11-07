@@ -44,9 +44,6 @@ return {
         ocamllsp = {
           mason = false,
         },
-        angularls = {
-          root_dir = require("lspconfig.util").root_pattern("angular.json", "project.json"),
-        },
       },
       setup = {
         eslint = function()
@@ -55,15 +52,6 @@ return {
               client.server_capabilities.documentFormattingProvider = true
             elseif client.name == "tsserver" then
               client.server_capabilities.documentFormattingProvider = false
-            end
-          end)
-        end,
-        angularls = function()
-          require("lazyvim.util").on_attach(function(client)
-            if client.name == "angularls" then
-              client.server_capabilities.renameProvider = true
-            elseif client.name == "tsserver" then
-              client.server_capabilities.renameProvider = false
             end
           end)
         end,
