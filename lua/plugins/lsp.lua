@@ -3,6 +3,14 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        tsserver = {
+          init_options = {
+            hostInfo = "neovim",
+            preferences = {
+              importModuleSpecifierPreference = "project-relative",
+            },
+          },
+        },
         eslint = {
           settings = {
             workingDirectory = { mode = "auto" },
