@@ -19,6 +19,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.coding.copilot" },
+    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "plugins" },
   },
   defaults = {
