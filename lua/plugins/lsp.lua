@@ -20,6 +20,7 @@ return {
             "svelte",
             "astro",
             "html",
+            "graphql",
           },
         },
         rust_analyzer = {
