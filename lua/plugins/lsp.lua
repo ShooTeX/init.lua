@@ -57,12 +57,9 @@ return {
           end)
         end,
 
-        tsserver = function()
-          require("lazyvim.util").lsp.on_attach(function(client)
-            if client.name == "typescript-tools" then
-              client.enable = false
-            end
-          end)
+        tsserver = function(_, opts)
+          require("typescript-tools").setup({ server = opts })
+          return true
         end,
       },
     },
