@@ -1,11 +1,6 @@
 return {
   { "ellisonleao/gruvbox.nvim" },
   {
-    "rebelot/kanagawa.nvim",
-    lazy = true,
-    name = "kanagawa",
-  },
-  {
     "folke/tokyonight.nvim",
     lazy = true,
     name = "tokyonight",
@@ -56,7 +51,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa",
+      colorscheme = "tokyonight",
     },
   },
 }
