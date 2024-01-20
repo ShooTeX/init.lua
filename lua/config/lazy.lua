@@ -34,7 +34,7 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "tokyonight", "habamax", "kanagawa.nvim", "catppuccin" } },
+  install = { colorscheme = { "tokyonight", "habamax", "kanagawa", "catppuccin" } },
   checker = { enabled = true },
   performance = {
     rtp = {
