@@ -1,6 +1,11 @@
 return {
   { "ellisonleao/gruvbox.nvim" },
   {
+    "rebelot/kanagawa.nvim",
+    lazy = true,
+    name = "kanagawa",
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = true,
     name = "tokyonight",
