@@ -14,7 +14,9 @@ return {
       {
         "<C-e>",
         function()
-          require("harpoon").ui:toggle_quick_menu(require("harpoon").list())
+          local harpoon = require("harpoon")
+
+          harpoon.ui:toggle_quick_menu(harpoon:list())
         end,
         desc = "Harpoon open menu",
       },
@@ -40,7 +42,7 @@ return {
         desc = "Harpoon select 3",
       },
       {
-        "<C-o>",
+        "<C-h>",
         function()
           require("harpoon"):list():select(4)
         end,
