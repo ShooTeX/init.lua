@@ -51,7 +51,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catpuccin",
+      colorscheme = "catppuccin",
     },
   },
 }
