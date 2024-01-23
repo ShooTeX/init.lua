@@ -5,6 +5,7 @@ return {
     lazy = true,
     name = "tokyonight",
     opts = { style = "moon" },
+    enabled = false,
   },
   {
     "catppuccin/nvim",
