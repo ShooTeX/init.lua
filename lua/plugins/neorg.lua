@@ -6,7 +6,11 @@ return {
   opts = {
     load = {
       ["core.defaults"] = {}, -- Loads default behaviour
-      ["core.completion"] = {}, -- Adds pretty icons to your documents
+      ["core.completion"] = {
+        config = {
+          engine = "nvim-cmp",
+        },
+      },
       ["core.concealer"] = {}, -- Adds pretty icons to your documents
       ["core.dirman"] = { -- Manages Neorg workspaces
         config = {
@@ -19,7 +23,11 @@ return {
       },
       ["core.export"] = {},
       ["core.export.markdown"] = {},
-      ["core.presenter"] = {},
+      ["core.presenter"] = {
+        config = {
+          zen_mode = "zen-mode",
+        },
+      },
       ["core.summary"] = {},
       ["core.ui.calendar"] = {},
     },
