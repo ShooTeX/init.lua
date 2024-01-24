@@ -6,15 +6,22 @@ return {
   opts = {
     load = {
       ["core.defaults"] = {}, -- Loads default behaviour
+      ["core.completion"] = {}, -- Adds pretty icons to your documents
       ["core.concealer"] = {}, -- Adds pretty icons to your documents
       ["core.dirman"] = { -- Manages Neorg workspaces
         config = {
+          icon_preset = "diamond",
           workspaces = {
             notes = "~/notes",
             defaultWorkspace = "notes",
           },
         },
       },
+      ["core.export"] = {},
+      ["core.export.markdown"] = {},
+      ["core.presenter"] = {},
+      ["core.summary"] = {},
+      ["core.ui.calendar"] = {},
     },
   },
 }
