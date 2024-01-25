@@ -17,8 +17,8 @@ return {
           icon_preset = "diamond",
           workspaces = {
             notes = "~/notes",
-            defaultWorkspace = "notes",
           },
+          default_workspace = "notes",
         },
       },
       ["core.export"] = {},
