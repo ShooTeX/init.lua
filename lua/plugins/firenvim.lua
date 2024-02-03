@@ -3,8 +3,8 @@ if vim.g.started_by_firenvim == true then
     globalSettings = { alt = "all" },
     localSettings = {
       [".*"] = {
-        cmdline = "none",
-        selector = "textarea",
+        -- selector = "textarea",
+        cmdline = "neovim",
         takeover = "never",
       },
     },
