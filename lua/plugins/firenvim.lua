@@ -1,3 +1,5 @@
+vim.g.firenvim_config.localSettings[".*"] = { takeover = "never" }
+
 return {
   "glacambre/firenvim",
   lazy = not vim.g.started_by_firenvim,
