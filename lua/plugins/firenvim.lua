@@ -4,7 +4,7 @@ if vim.g.started_by_firenvim == true then
     localSettings = {
       [".*"] = {
         -- selector = "textarea",
-        cmdline = "neovim",
+        -- cmdline = "neovim",
         takeover = "never",
       },
     },
