@@ -1,10 +1,8 @@
 return {
   "stevearc/conform.nvim",
   opts = {
-    lua = { "stylua" },
-    fish = { "fish_indent" },
-    sh = { "shfmt" },
-    nix = { "nixfmt" },
-    html = { "djlint" },
+    formatters_by_ft = {
+      html = { "prettierd" },
+    },
   },
 }
