@@ -5,5 +5,6 @@ return {
     fish = { "fish_indent" },
     sh = { "shfmt" },
     nix = { "nixfmt" },
+    html = { "djlint" },
   },
 }
