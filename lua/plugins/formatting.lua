@@ -3,7 +3,7 @@ return {
   opts = {
     formatters_by_ft = {
       html = { "prettierd" },
-      sql = { "prettierd" },
+      sql = { "sql-formatter" },
     },
   },
 }
