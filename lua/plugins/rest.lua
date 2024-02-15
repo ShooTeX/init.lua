@@ -1,9 +1,10 @@
 return {
   "rest-nvim/rest.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
+  ft = { "http" },
   keys = {
-    { "<leader>rr", "<cmd>RestNvim<cr>", desc = "Rest run" },
-    { "<leader>rp", "<cmd>RestNvimPreview<cr>", desc = "Rest preview" },
-    { "<leader>rl", "<cmd>RestNvimLast<cr>", desc = "Rest run last" },
+    { "<leader>rr", "<Plug>RestNvim", desc = "Rest run" },
+    { "<leader>rp", "<Plug>RestNvimPreview", desc = "Rest preview" },
+    { "<leader>rl", "<Plug>RestNvimLast", desc = "Rest run last" },
   },
 }
