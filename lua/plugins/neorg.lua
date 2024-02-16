@@ -12,7 +12,9 @@ return {
         },
       },
       ["core.concealer"] = { -- Adds pretty icons to your documents
-        icon_preset = "diamond",
+        config = {
+          icon_preset = "diamond",
+        },
       },
       ["core.dirman"] = { -- Manages Neorg workspaces
         config = {
