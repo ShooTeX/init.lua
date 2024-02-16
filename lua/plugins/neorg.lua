@@ -1,7 +1,8 @@
 return {
   "nvim-neorg/neorg",
   build = ":Neorg sync-parsers",
-  -- tag = "*",
+  ft = "norg",
+  cmd = "Neorg",
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     load = {
@@ -26,11 +27,6 @@ return {
       },
       ["core.export"] = {},
       ["core.export.markdown"] = {},
-      ["core.presenter"] = {
-        config = {
-          zen_mode = "zen-mode",
-        },
-      },
       ["core.summary"] = {},
       ["core.ui.calendar"] = {},
     },
