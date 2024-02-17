@@ -1,6 +1,6 @@
 return {
   "lukas-reineke/headlines.nvim",
   opts = {
-    neorg = false,
+    norg = false,
   },
 }
