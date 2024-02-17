@@ -1,6 +1,4 @@
 return {
   "lukas-reineke/headlines.nvim",
-  opts = {
-    norg = false,
-  },
+  ft = { "markdown", "rmd", "org" },
 }
