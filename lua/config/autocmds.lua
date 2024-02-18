@@ -29,26 +29,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = augroup("notes_pull"),
   pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
   callback = function()
-    vim.system({ "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" }, {
-      stdout = function(_, data)
-        if data then
-          vim.notify(data, "info", { title = "Notes Sync" })
-        end
-      end,
-      stderr = function(_, data)
-        if data then
-          vim.notify(data, "error", { title = "Notes Sync" })
-        end
-      end,
-    })
-  end,
-})
-
--- push changes when leaving a notes file
-vim.api.nvim_create_autocmd("BufLeave", {
-  group = augroup("notes_push"),
-  pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
-  callback = function()
     --- @type unknown, vim.SystemCompleted
     local err, result = a.vim.system(
       { "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" },
@@ -63,3 +43,23 @@ vim.api.nvim_create_autocmd("BufLeave", {
     vim.notify(result.stdout, "info", { title = "Notes Sync" })
   end,
 })
+
+-- push changes when leaving a notes file
+-- vim.api.nvim_create_autocmd("BufLeave", {
+--   group = augroup("notes_push"),
+--   pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
+--   callback = function()
+--     --- @type unknown, vim.SystemCompleted
+--     local err, result = a.vim.system(
+--       { "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" },
+--       { text = true }
+--     )
+--
+--     if err or not result or result.code == 0 then
+--       vim.notify("Failed to pull latest changes", "error", { title = "Notes Sync" })
+--       return
+--     end
+--
+--     vim.notify(result.stdout, "info", { title = "Notes Sync" })
+--   end,
+-- })
