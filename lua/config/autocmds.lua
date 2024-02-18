@@ -65,7 +65,7 @@ end
 vim.api.nvim_create_autocmd("BufWinLeave", {
   group = augroup("notes_push"),
   pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
-  callback = a.void(function(e)
+  callback = a.void(function()
     local expanded_home = expand_home()
     local relative_filepath = get_relative_filepath()
     local filename = get_filename()
