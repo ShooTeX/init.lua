@@ -23,25 +23,24 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+local asystem = a.wrap(vim.system, 3)
+
 -- pull latest changes when entering a notes file
 vim.api.nvim_create_autocmd("BufEnter", {
   once = true,
   group = augroup("notes_pull"),
   pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
-  callback = function()
-    --- @type unknown, vim.SystemCompleted
-    local err, result = a.vim.system(
-      { "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" },
-      { text = true }
-    )
+  callback = a.void(function()
+    --- @type vim.SystemCompleted
+    local result = asystem({ "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" })
 
-    if err or not result or result.code == 0 then
-      vim.notify("Failed to pull latest changes", "error", { title = "Notes Sync" })
+    if result.code ~= 0 then
+      vim.notify("Failed to pull latest changes:\n" .. result.stdout, "error", { title = "Notes Sync" })
       return
     end
 
     vim.notify(result.stdout, "info", { title = "Notes Sync" })
-  end,
+  end),
 })
 
 -- push changes when leaving a notes file
