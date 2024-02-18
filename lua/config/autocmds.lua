@@ -2,6 +2,8 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+local a = require("plenary.async")
+
 local function augroup(name)
   return vim.api.nvim_create_augroup("stx_" .. name, { clear = true })
 end
@@ -27,7 +29,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = augroup("notes_pull"),
   pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
   callback = function()
-    print("multi run? why?")
     vim.system({ "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" }, {
       stdout = function(_, data)
         if data then
@@ -40,5 +41,25 @@ vim.api.nvim_create_autocmd("BufEnter", {
         end
       end,
     })
+  end,
+})
+
+-- push changes when leaving a notes file
+vim.api.nvim_create_autocmd("BufLeave", {
+  group = augroup("notes_push"),
+  pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
+  callback = function()
+    --- @type unknown, vim.SystemCompleted
+    local err, result = a.vim.system(
+      { "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" },
+      { text = true }
+    )
+
+    if err or not result or result.code == 0 then
+      vim.notify("Failed to pull latest changes", "error", { title = "Notes Sync" })
+      return
+    end
+
+    vim.notify(result.stdout, "info", { title = "Notes Sync" })
   end,
 })
