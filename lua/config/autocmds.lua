@@ -43,19 +43,67 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end),
 })
 
+local get_relative_filepath = function()
+  local git_root_relative = vim.fn.finddir(".git", ".;")
+  local git_root_absolute = vim.fn.fnamemodify(git_root_relative, ":p")
+  local absolute_filepath = vim.fn.expand("%:p")
+  return absolute_filepath:sub(#git_root_absolute - 4)
+end
+
+local get_filename = function()
+  return vim.fn.expand("%:t")
+end
+
+local expand_home = function()
+  return vim.fn.expand("~")
+end
+
 -- commit changes when leaving a notes file
-vim.api.nvim_create_autocmd("BufLeave", {
+vim.api.nvim_create_autocmd("BufWinLeave", {
   group = augroup("notes_push"),
   pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
-  callback = function()
-    -- local git_root = vim.fn.finddir(".git", ".;")
-    -- local absolute_path = vim.fn.expand("%:p")
-    -- print(absolute_path, git_root)
-    local git_root_relative = vim.fn.finddir(".git", ".;")
-    local git_root_absolute = vim.fn.fnamemodify(git_root_relative, ":p")
-    local absolute_filepath = vim.fn.expand("%:p")
-    local relative_filepath = absolute_filepath:sub(#git_root_absolute - 4)
+  callback = a.void(function(e)
+    local expanded_home = expand_home()
+    local relative_filepath = get_relative_filepath()
+    local filename = get_filename()
+    --- @type vim.SystemCompleted
+    local changes = asystem({
+      "git",
+      "-C",
+      expanded_home .. "/notes",
+      "status",
+      "--porcelain",
+      relative_filepath,
+    })
 
-    print(git_root_relative, git_root_absolute, absolute_filepath, relative_filepath)
-  end,
+    if changes.code ~= 0 then
+      vim.notify("Failed to check for changes:\n" .. changes.stderr, "error", { title = "Notes Sync" })
+      return
+    end
+
+    if changes.stdout == "" then
+      return
+    end
+
+    --- @type vim.SystemCompleted
+    local commit = asystem(
+      { "git", "-C", expanded_home .. "/notes", "commit", relative_filepath, "-m", "Update " .. filename },
+      { text = true }
+    )
+
+    if commit.code ~= 0 then
+      vim.notify("Failed to commit changes:\n" .. commit.stderr, "error", { title = "Notes Sync" })
+      return
+    end
+
+    --- @type vim.SystemCompleted
+    local push = asystem({ "git", "-C", expanded_home .. "/notes", "push" })
+
+    if push.code ~= 0 then
+      vim.notify("Failed to push changes:\n" .. push.stderr, "error", { title = "Notes Sync" })
+      return
+    end
+
+    vim.notify("pushed changes from: " .. filename, "info", { title = "Notes Sync" })
+  end),
 })
