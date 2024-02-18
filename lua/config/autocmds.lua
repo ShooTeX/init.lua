@@ -88,6 +88,15 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
       return
     end
 
+    if changes.stdout:sub(1, 2) == "??" then
+      --- @type vim.SystemCompleted
+      local add = asystem({ "git", "-C", expanded_home .. "/notes", "add", relative_filepath }, { text = true })
+      if add.code ~= 0 then
+        vim.notify("Failed to add changes:\n" .. add.stderr, "error", { title = "Notes Sync" })
+        return
+      end
+    end
+
     --- @type vim.SystemCompleted
     local commit = asystem(
       { "git", "-C", expanded_home .. "/notes", "commit", relative_filepath, "-m", "Update " .. filename },
