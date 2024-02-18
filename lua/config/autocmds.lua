@@ -32,7 +32,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
   pattern = { vim.fn.expand("~") .. "/notes/*.norg" },
   callback = a.void(function()
     --- @type vim.SystemCompleted
-    local result = asystem({ "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" })
+    local result = asystem(
+      { "git", "-C", vim.fn.expand("~") .. "/notes", "pull", "--rebase", "--autostash" },
+      { text = true }
+    )
 
     if result.code ~= 0 then
       vim.notify("Failed to pull latest changes:\n" .. result.stdout, "error", { title = "Notes Sync" })
@@ -74,7 +77,7 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
       "status",
       "--porcelain",
       relative_filepath,
-    })
+    }, { text = true })
 
     if changes.code ~= 0 then
       vim.notify("Failed to check for changes:\n" .. changes.stderr, "error", { title = "Notes Sync" })
@@ -97,7 +100,7 @@ vim.api.nvim_create_autocmd("BufWinLeave", {
     end
 
     --- @type vim.SystemCompleted
-    local push = asystem({ "git", "-C", expanded_home .. "/notes", "push" })
+    local push = asystem({ "git", "-C", expanded_home .. "/notes", "push" }, { text = true })
 
     if push.code ~= 0 then
       vim.notify("Failed to push changes:\n" .. push.stderr, "error", { title = "Notes Sync" })
