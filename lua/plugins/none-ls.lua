@@ -12,6 +12,8 @@ return {
 
       nls.builtins.formatting.ktlint,
       nls.builtins.diagnostics.ktlint,
+
+      nls.builtins.formatting.nixfmt,
     })
   end,
 }
