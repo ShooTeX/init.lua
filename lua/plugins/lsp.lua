@@ -46,6 +46,8 @@ return {
         ocamllsp = {
           mason = false,
         },
+        -- currently missing in mason
+        nixd = {},
       },
       setup = {
         eslint = function()
