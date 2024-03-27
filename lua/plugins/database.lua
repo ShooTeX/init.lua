@@ -5,7 +5,6 @@ return {
   },
   keys = {
     {
-      "n",
       "<leader>idb",
       function()
         require("dbee").open()
