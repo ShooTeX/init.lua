@@ -4,5 +4,4 @@ end, {})
 
 return {
   "kndndrj/nvim-dbee",
-  cmd = "DbOpen",
 }
