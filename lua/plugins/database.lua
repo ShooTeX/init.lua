@@ -3,6 +3,7 @@ return {
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
+  cmd = { "DbeeCreateConnection" },
   build = function()
     require("dbee").install()
   end,
