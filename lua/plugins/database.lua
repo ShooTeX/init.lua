@@ -15,4 +15,5 @@ return {
       desc = "Open dbee",
     },
   },
+  opts = {},
 }
