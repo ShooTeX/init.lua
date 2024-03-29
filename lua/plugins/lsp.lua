@@ -59,11 +59,6 @@ return {
             end
           end)
         end,
-
-        tsserver = function(_, opts)
-          require("typescript-tools").setup({ server = opts })
-          return true
-        end,
       },
     },
   },
