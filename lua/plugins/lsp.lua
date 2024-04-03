@@ -98,6 +98,7 @@ return {
         },
         -- currently missing in mason
         nixd = {},
+        biome = {},
       },
       setup = {
         eslint = function()
@@ -105,6 +106,15 @@ return {
             if client.name == "eslint" then
               client.server_capabilities.documentFormattingProvider = true
             elseif client.name == "tsserver" or client.name == "vtsls" then
+              client.server_capabilities.documentFormattingProvider = false
+            end
+          end)
+        end,
+        biome = function()
+          require("lazyvim.util").lsp.on_attach(function(client, buffer)
+            if client.name == "biome" then
+              client.server_capabilities.documentFormattingProvider = true
+            elseif client.name == "vtsls" or client.name == "jsonls" then
               client.server_capabilities.documentFormattingProvider = false
             end
           end)
