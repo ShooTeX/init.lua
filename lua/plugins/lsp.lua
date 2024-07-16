@@ -4,56 +4,6 @@ return {
     ---@class PluginLspOpts
     opts = {
       servers = {
-        tsserver = false,
-        vtsls = {
-          keys = {
-            {
-              "<leader>cio",
-              function()
-                vim.lsp.buf.code_action({
-                  apply = true,
-                  context = {
-                    only = { "source.organizeImports" },
-                    diagnostics = {},
-                  },
-                })
-              end,
-              desc = "Organize Imports",
-            },
-            {
-              "<leader>cir",
-              function()
-                vim.lsp.buf.code_action({
-                  apply = true,
-                  context = {
-                    only = { "source.removeUnused.ts" },
-                    diagnostics = {},
-                  },
-                })
-              end,
-              desc = "Remove Unused Imports",
-            },
-            {
-              "<leader>cia",
-              function()
-                vim.lsp.buf.code_action({
-                  apply = true,
-                  context = {
-                    only = { "source.addMissingImports.ts" },
-                    diagnostics = {},
-                  },
-                })
-              end,
-              desc = "add missing imports",
-            },
-          },
-          ---@diagnostic disable-next-line: missing-fields
-          settings = {
-            completions = {
-              completeFunctionCalls = true,
-            },
-          },
-        },
         eslint = {
           settings = {
             workingDirectory = { mode = "auto" },
@@ -118,11 +68,6 @@ return {
               client.server_capabilities.documentFormattingProvider = false
             end
           end)
-        end,
-        vtsls = function(_, opts)
-          require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-          require("lspconfig").vtsls.setup({ server = opts })
-          return true
         end,
       },
     },
