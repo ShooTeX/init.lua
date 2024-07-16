@@ -4,10 +4,40 @@ return {
     event = "BufEnter",
     keys = {
       { ";a", desc = "Better escape" },
-      { "jk", desc = "Better escape" },
     },
     opts = {
-      mapping = { ";a", "jk" },
+      timeout = vim.o.timeoutlen,
+      default_mappings = false,
+      mappings = {
+        i = {
+          [";"] = {
+            a = "<Esc>",
+            [";"] = "<Esc>",
+          },
+        },
+        c = {
+          [";"] = {
+            a = "<Esc>",
+            [";"] = "<Esc>",
+          },
+        },
+        t = {
+          [";"] = {
+            a = "<Esc>",
+            [";"] = "<Esc>",
+          },
+        },
+        v = {
+          [";"] = {
+            a = "<Esc>",
+          },
+        },
+        s = {
+          [";"] = {
+            a = "<Esc>",
+          },
+        },
+      },
     },
   },
 }
