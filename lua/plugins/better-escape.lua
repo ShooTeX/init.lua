@@ -5,5 +5,6 @@ return {
     keys = {
       { "jk", desc = "Better escape" },
     },
+    config = true,
   },
 }
