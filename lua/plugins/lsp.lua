@@ -46,6 +46,15 @@ return {
         ocamllsp = {
           mason = false,
         },
+        vtsls = {
+          settings = {
+            typescript = {
+              inlayHints = {
+                enabled = false,
+              },
+            },
+          },
+        },
         -- currently missing in mason
         nixd = {},
         biome = {},
