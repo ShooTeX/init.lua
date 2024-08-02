@@ -56,6 +56,11 @@ return {
             },
           },
         },
+        svelte = {
+          settings = {
+            { svelte = { plugin = { svelte = { format = { enable = false } } } } },
+          },
+        },
         -- currently missing in mason
         nixd = {},
         biome = {},
