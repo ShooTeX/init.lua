@@ -50,7 +50,8 @@ return {
           settings = {
             typescript = {
               inlayHints = {
-                enabled = false,
+                parameterTypes = { enabled = false },
+                functionLikeReturnTypes = { enabled = false },
               },
             },
           },
