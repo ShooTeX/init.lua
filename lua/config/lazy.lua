@@ -19,6 +19,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.lang.svelte" },
+    { import = "lazyvim.plugins.extras.lang.kotlin" },
 
     { import = "lazyvim.plugins.extras.dap.core" },
 
@@ -27,10 +28,15 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.linting.eslint" },
 
     { import = "lazyvim.plugins.extras.coding.copilot" },
+    { import = "lazyvim.plugins.extras.coding.neogen" },
+    { import = "lazyvim.plugins.extras.coding.copilot-chat" },
+
+    { import = "lazyvim.plugins.extras.editor.inc-rename" },
+
+    { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
 
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-
-    { import = "lazyvim.plugins.extras.editor.outline" },
+    { import = "lazyvim.plugins.extras.util.rest" },
 
     { import = "plugins" },
   },
