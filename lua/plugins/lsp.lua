@@ -62,7 +62,17 @@ return {
           },
         },
         biome = {},
-        nixd = {},
+        nixd = {
+          settings = {
+            nixd = {
+              options = {
+                darwin = {
+                  expr = '(builtins.getFlake ("git+file://" + toString ./.)).darwinConfigurations.STX-MacBook-Pro.options',
+                },
+              },
+            },
+          },
+        },
         nil_ls = false,
       },
       setup = {
