@@ -61,8 +61,6 @@ return {
             svelte = { plugin = { svelte = { format = { enable = false } } } },
           },
         },
-        -- currently missing in mason
-        nixd = {},
         biome = {},
       },
       setup = {
