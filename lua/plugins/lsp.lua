@@ -62,6 +62,10 @@ return {
           },
         },
         biome = {},
+        nixd = {},
+        nil_ls = {
+          mason = false,
+        },
       },
       setup = {
         eslint = function()
