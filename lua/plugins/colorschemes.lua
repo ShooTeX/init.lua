@@ -53,6 +53,7 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
+    enabled = "false",
     name = "kanagawa",
     opts = {
       overrides = function(colors)
@@ -98,9 +99,13 @@ return {
     },
   },
   {
+    "projekt0n/github-nvim-theme",
+    name = "github",
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanagawa",
+      colorscheme = "github_dark_default",
     },
   },
 }
