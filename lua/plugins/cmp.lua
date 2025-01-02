@@ -1,4 +1,5 @@
 return {
+  { "Saghen/blink.cmp", version = "0.8.0" },
   {
     "hrsh7th/nvim-cmp",
     enabled = false,
