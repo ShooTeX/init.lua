@@ -12,6 +12,7 @@ if vim.g.started_by_firenvim == true then
 end
 
 return {
+  enabled = false,
   "glacambre/firenvim",
   lazy = not vim.g.started_by_firenvim,
   build = function()
