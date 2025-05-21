@@ -1,5 +1,10 @@
 return {
   "olimorris/codecompanion.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "nvim-treesitter/nvim-treesitter",
+    "ravitemer/mcphub.nvim",
+  },
   opts = {
     extensions = {
       mcphub = {
@@ -12,9 +17,23 @@ return {
       },
     },
   },
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    "ravitemer/mcphub.nvim",
+  keys = {
+    { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
+    {
+      "<leader>aa",
+      function()
+        vim.cmd("CodeCompanionChat Toggle")
+      end,
+      desc = "Toggle (AiChat)",
+      mode = { "n", "v" },
+    },
+    {
+      "<leader>ap",
+      function()
+        vim.cmd("CodeCompanionActions")
+      end,
+      desc = "Ai Prompt",
+      mode = { "n", "v" },
+    },
   },
 }
