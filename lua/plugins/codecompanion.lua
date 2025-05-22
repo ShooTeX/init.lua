@@ -2,6 +2,7 @@ return {
   "olimorris/codecompanion.nvim",
   lazy = false,
   dependencies = {
+    "j-hui/fidget.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/mcphub.nvim",
