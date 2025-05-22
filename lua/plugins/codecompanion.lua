@@ -1,10 +1,10 @@
 return {
   "olimorris/codecompanion.nvim",
+  lazy = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-treesitter/nvim-treesitter",
     "ravitemer/mcphub.nvim",
-    "saghen/blink.cmp",
   },
   opts = {
     extensions = {
