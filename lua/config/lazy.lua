@@ -27,7 +27,6 @@ require("lazy").setup({
 
     { import = "lazyvim.plugins.extras.editor.harpoon2" },
     { import = "lazyvim.plugins.extras.editor.inc-rename" },
-    { import = "lazyvim.plugins.extras.editor.telescope" },
     { import = "lazyvim.plugins.extras.editor.mini-diff" },
 
     { import = "lazyvim.plugins.extras.formatting.biome" },
