@@ -17,6 +17,13 @@ return {
           },
         })
       end,
+      anthropic = function()
+        return require("codecompanion.adapters").extend("anthropic", {
+          env = {
+            api_key = 'cmd:op read "op://private/Anthropic API Key/credential" --no-newline',
+          },
+        })
+      end,
     },
     extensions = {
       mcphub = {
