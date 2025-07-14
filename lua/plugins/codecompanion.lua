@@ -7,6 +7,17 @@ return {
     "ravitemer/mcphub.nvim",
   },
   opts = {
+    adapters = {
+      copilot = function()
+        return require("codecompanion.adapters").extend("copilot", {
+          schema = {
+            model = {
+              default = "claude-sonnet-4",
+            },
+          },
+        })
+      end,
+    },
     extensions = {
       mcphub = {
         callback = "mcphub.extensions.codecompanion",
