@@ -4,6 +4,7 @@ return {
     ---@class PluginLspOpts
     opts = {
       servers = {
+        oxlint = {},
         eslint = {
           settings = {
             workingDirectory = { mode = "auto" },
