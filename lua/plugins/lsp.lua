@@ -75,6 +75,7 @@ return {
         },
         nil_ls = false,
       },
+      oxlint = {},
       setup = {
         eslint = function()
           require("lazyvim.util").lsp.on_attach(function(client)
