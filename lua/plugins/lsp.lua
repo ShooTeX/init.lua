@@ -4,6 +4,7 @@ return {
     ---@class PluginLspOpts
     opts = {
       servers = {
+        mdx_analyzer = {},
         oxlint = {},
         eslint = {
           settings = {
