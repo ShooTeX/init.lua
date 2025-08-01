@@ -4,6 +4,13 @@ return {
     ---@class PluginLspOpts
     opts = {
       servers = {
+        tailwindcss = {
+          settings = {
+            tailwindCSS = {
+              classFunctions = { "tw", "twMerge", "cva", "cvaMerge", "cn", "cnMerge", "tw\\.[a-z-]+" },
+            },
+          },
+        },
         mdx_analyzer = {},
         oxlint = {},
         eslint = {
