@@ -79,16 +79,16 @@ return {
       },
       setup = {
         eslint = function()
-          require("lazyvim.util").lsp.on_attach(function(client)
+          Snacks.util.lsp.on({}, function(_, client)
             if client.name == "eslint" then
               client.server_capabilities.documentFormattingProvider = true
-            elseif client.name == "tsserver" or client.name == "vtsls" then
+            elseif client.name == "tsserver" then
               client.server_capabilities.documentFormattingProvider = false
             end
           end)
         end,
         biome = function()
-          require("lazyvim.util").lsp.on_attach(function(client, buffer)
+          Snacks.util.lsp.on({}, function(_, client)
             if client.name == "biome" then
               client.server_capabilities.documentFormattingProvider = true
             elseif client.name == "vtsls" or client.name == "jsonls" then
