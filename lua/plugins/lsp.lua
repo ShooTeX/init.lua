@@ -90,8 +90,6 @@ return {
             },
           },
         },
-        statix = {},
-        nil_ls = false,
       },
       setup = {
         eslint = function()
