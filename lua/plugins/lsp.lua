@@ -67,10 +67,13 @@ return {
         nixd = {
           settings = {
             nixd = {
+              nixpkgs = {
+                expr = "import <nixpkgs> { }",
+              },
+              formatting = {
+                command = { "nixfmt" },
+              },
               options = {
-                nixpkgs = {
-                  expr = "import <nixpkgs> { }",
-                },
                 darwin = {
                   expr = string.format(
                     '(builtins.getFlake ("git+file://" + toString ./.)).darwinConfigurations.%s.options',
@@ -87,6 +90,7 @@ return {
             },
           },
         },
+        statix = {},
         nil_ls = false,
       },
       setup = {
