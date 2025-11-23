@@ -68,8 +68,20 @@ return {
           settings = {
             nixd = {
               options = {
+                nixpkgs = {
+                  expr = "import <nixpkgs> { }",
+                },
                 darwin = {
-                  expr = '(builtins.getFlake ("git+file://" + toString ./.)).darwinConfigurations.STX-MacBook-Pro.options',
+                  expr = string.format(
+                    '(builtins.getFlake ("git+file://" + toString ./.)).darwinConfigurations.%s.options',
+                    vim.fn.hostname()
+                  ),
+                },
+                home_manager = {
+                  expr = string.format(
+                    '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations.%s.options',
+                    vim.fn.hostname()
+                  ),
                 },
               },
             },
