@@ -96,7 +96,7 @@ return {
           Snacks.util.lsp.on({}, function(_, client)
             if client.name == "eslint" then
               client.server_capabilities.documentFormattingProvider = true
-            elseif client.name == "tsserver" then
+            elseif client.name == "vtsls" then
               client.server_capabilities.documentFormattingProvider = false
             end
           end)
@@ -104,6 +104,15 @@ return {
         biome = function()
           Snacks.util.lsp.on({}, function(_, client)
             if client.name == "biome" then
+              client.server_capabilities.documentFormattingProvider = true
+            elseif client.name == "vtsls" or client.name == "jsonls" then
+              client.server_capabilities.documentFormattingProvider = false
+            end
+          end)
+        end,
+        oxlint = function()
+          Snacks.util.lsp.on({}, function(_, client)
+            if client.name == "oxlint" then
               client.server_capabilities.documentFormattingProvider = true
             elseif client.name == "vtsls" or client.name == "jsonls" then
               client.server_capabilities.documentFormattingProvider = false
