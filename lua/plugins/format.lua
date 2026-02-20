@@ -3,8 +3,7 @@ return {
   opts = {
     formatters_by_ft = {
       nix = { "nixfmt" },
-      typescript = { "oxfmt", "biome-check" },
-      typescriptreact = { "oxfmt", "biome-check" },
+      typescript = { "oxfmt" },
     },
   },
 }
