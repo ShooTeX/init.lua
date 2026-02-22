@@ -64,7 +64,20 @@ return {
           },
         },
         biome = {
-          root_markers = { "biome.json", "biome.jsonc" },
+          root_dir = function(fname)
+            local biome_root = vim.fs.root(fname, { "biome.json", "biome.jsonc" })
+            if biome_root then
+              return biome_root
+            end
+            return vim.fs.root(fname, {
+              "package-lock.json",
+              "yarn.lock",
+              "pnpm-lock.yaml",
+              "bun.lockb",
+              "bun.lock",
+              ".git",
+            })
+          end,
         },
         nixd = {
           settings = {
