@@ -63,7 +63,6 @@ return {
             svelte = { plugin = { svelte = { format = { enable = false } } } },
           },
         },
-        biome = {},
         nixd = {
           settings = {
             nixd = {
