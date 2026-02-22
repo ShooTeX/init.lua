@@ -70,7 +70,6 @@ return {
             -- We select then from the project root, which is identified by the presence of a package
             -- manager lock file.
             local root_markers = {
-              "package.json",
               "package-lock.json",
               "yarn.lock",
               "pnpm-lock.yaml",
