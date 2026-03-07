@@ -105,19 +105,13 @@ return {
               },
               options = {
                 darwin = {
-                  expr = string.format(
-                    '(builtins.getFlake ("git+file://" + toString ./.)).darwinConfigurations.%s.options',
-                    vim.fn.hostname()
-                  ),
+                  expr = '(builtins.getFlake (builtins.getEnv "HOME" + "/.dotfiles")).darwinConfigurations.STX-MacBook-Pro.options',
                 },
                 home_manager = {
-                  expr = string.format(
-                    '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations.%s.options',
-                    vim.fn.hostname()
-                  ),
+                  expr = '(builtins.getFlake (builtins.getEnv "HOME" + "/.dotfiles")).darwinConfigurations.STX-MacBook-Pro.options.home-manager.users.type.getSubOptions []',
                 },
                 nixos = {
-                  expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.heisenberg.options',
+                  expr = '(builtins.getFlake (builtins.getEnv "HOME" + "/.dotfiles")).nixosConfigurations.heisenberg.options',
                 },
               },
             },
