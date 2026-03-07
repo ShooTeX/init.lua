@@ -116,6 +116,9 @@ return {
                     vim.fn.hostname()
                   ),
                 },
+                nixos = {
+                  expr = '(builtins.getFlake ("git+file://" + toString ./.)).nixosConfigurations.heisenberg.options',
+                },
               },
             },
           },
