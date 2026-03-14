@@ -3,6 +3,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  enabled = false,
   lazy = false,
   build = "bun add -g mcp-hub@latest", -- Installs `mcp-hub` node binary globally
   config = function()
