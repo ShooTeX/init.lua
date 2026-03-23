@@ -1,18 +1,14 @@
 return {
   "huggingface/llm.nvim",
   opts = {
-    backend = "ollama",
-    model = "qwen2.5-coder:1.5b-base",
-    url = "http://localhost:11434", -- llm-ls uses "/api/generate"
-    -- cf https://github.com/ollama/ollama/blob/main/docs/api.md#parameters
+    backend = "openai",
+    model = "mlx-community/Qwen2.5-Coder-3B-4bit",
+    url = "http://localhost:4455/v1/completions",
     request_body = {
-      -- Modelfile options for the model you use
-      options = {
-        temperature = 0.2,
-        top_p = 0.95,
-      },
+      max_tokens = 150,
+      temperature = 0.2,
     },
-    tokens_to_clear = { "<|endoftext|>" },
+    tokens_to_clear = { "<|endoftext|>", "<|fim_pad|>" },
     fim = {
       enabled = true,
       prefix = "<|fim_prefix|>",
