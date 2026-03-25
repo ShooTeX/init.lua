@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.g.trouble_lualine = false
+vim.opt.exrc = true
