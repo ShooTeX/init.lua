@@ -87,15 +87,6 @@ return {
         },
       },
       setup = {
-        eslint = function()
-          Snacks.util.lsp.on({}, function(_, client)
-            if client.name == "eslint" then
-              client.server_capabilities.documentFormattingProvider = true
-            elseif client.name == "vtsls" then
-              client.server_capabilities.documentFormattingProvider = false
-            end
-          end)
-        end,
         tailwindcss = function(_, opts)
           opts.filetypes = opts.filetypes or {}
 
