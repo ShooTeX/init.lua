@@ -67,6 +67,34 @@ return {
         },
       },
       setup = {
+        eslint = function()
+          local function get_client(buf)
+            return vim.lsp.get_clients({ name = "eslint", bufnr = buf })[1]
+          end
+
+          local formatter = LazyVim.lsp.formatter({
+            name = "eslint: EslintFixAll",
+            primary = false,
+            priority = 200,
+            filter = "eslint",
+            format = function(buf)
+              local client = get_client(buf)
+              if client then
+                local push_diagnostics =
+                  vim.diagnostic.get(buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
+                -- Older versions of the ESLint language server send push diagnostics rather than using pull.
+                -- We support both for backwards compatibility.
+                local pull_diagnostics =
+                  vim.diagnostic.get(buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id, true) })
+                if (#pull_diagnostics + #push_diagnostics) > 0 then
+                  vim.cmd("LspEslintFixAll")
+                end
+              end
+            end,
+          })
+
+          LazyVim.format.register(formatter)
+        end,
         tailwindcss = function(_, opts)
           opts.filetypes = opts.filetypes or {}
 
