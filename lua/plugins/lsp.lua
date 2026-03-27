@@ -5,6 +5,26 @@ return {
     opts = {
       servers = {
         mdx_analyzer = {},
+        eslint = {
+          settings = {
+            workingDirectory = { mode = "auto" },
+          },
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+            "markdown",
+            "mdx",
+            "vue",
+            "svelte",
+            "astro",
+            "html",
+            "graphql",
+          },
+        },
         rust_analyzer = {
           settings = {
             ["rust-analyzer"] = {
@@ -68,28 +88,13 @@ return {
       },
       setup = {
         eslint = function()
-          local function get_client(buf)
-            return vim.lsp.get_clients({ name = "eslint", bufnr = buf })[1]
-          end
-
-          local formatter = LazyVim.lsp.formatter({
-            name = "eslint: EslintFixAll",
-            primary = false,
-            priority = 200,
-            filter = "eslint",
-            format = function(buf)
-              local client = get_client(buf)
-              if client then
-                local push_diagnostics =
-                  vim.diagnostic.get(buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
-                if #push_diagnostics > 0 then
-                  vim.cmd("LspEslintFixAll")
-                end
-              end
-            end,
-          })
-
-          LazyVim.format.register(formatter)
+          Snacks.util.lsp.on({}, function(_, client)
+            if client.name == "eslint" then
+              client.server_capabilities.documentFormattingProvider = true
+            elseif client.name == "vtsls" then
+              client.server_capabilities.documentFormattingProvider = false
+            end
+          end)
         end,
         tailwindcss = function(_, opts)
           opts.filetypes = opts.filetypes or {}
