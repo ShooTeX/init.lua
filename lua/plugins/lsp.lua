@@ -82,11 +82,7 @@ return {
               if client then
                 local push_diagnostics =
                   vim.diagnostic.get(buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id) })
-                -- Older versions of the ESLint language server send push diagnostics rather than using pull.
-                -- We support both for backwards compatibility.
-                local pull_diagnostics =
-                  vim.diagnostic.get(buf, { namespace = vim.lsp.diagnostic.get_namespace(client.id, true) })
-                if (#pull_diagnostics + #push_diagnostics) > 0 then
+                if #push_diagnostics > 0 then
                   vim.cmd("LspEslintFixAll")
                 end
               end
