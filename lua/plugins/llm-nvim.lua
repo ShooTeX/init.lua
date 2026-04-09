@@ -6,7 +6,7 @@ return {
     url = "http://localhost:4455/v1/completions",
     request_body = {
       max_tokens = 150,
-      temperature = 0.2,
+      temperature = 0,
     },
     tokens_to_clear = { "<|endoftext|>", "<|fim_pad|>" },
     fim = {
