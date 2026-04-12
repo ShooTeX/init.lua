@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   "huggingface/llm.nvim",
   opts = {
     backend = "openai",
