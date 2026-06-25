@@ -4,6 +4,8 @@ return {
     ---@class PluginLspOpts
     opts = {
       servers = {
+        kotlin_language_server = false,
+        kotlin_lsp = {},
         mdx_analyzer = {},
         eslint = {
           settings = {
