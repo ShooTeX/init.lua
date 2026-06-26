@@ -6,6 +6,11 @@ return {
       nix = { "nixfmt" },
     },
     formatters = {
+      ktlint = {
+        cwd = function(self, ctx)
+          return ctx.dirname
+        end,
+      },
       oxfmt = {
         condition = function(self, ctx)
           return vim.fs.find(
