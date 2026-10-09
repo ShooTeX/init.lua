@@ -19,9 +19,9 @@ return {
     { "<C-j>", split("move_cursor_down"), desc = "Move down" },
     { "<C-k>", split("move_cursor_up"), desc = "Move up" },
     { "<C-l>", split("move_cursor_right"), desc = "Move right" },
-    { "<A-H>", split("resize_left"), desc = "Resize left" },
-    { "<A-J>", split("resize_down"), desc = "Resize down" },
-    { "<A-K>", split("resize_up"), desc = "Resize up" },
-    { "<A-L>", split("resize_right"), desc = "Resize right" },
+    { "<C-A-h>", split("resize_left"), desc = "Resize left" },
+    { "<C-A-j>", split("resize_down"), desc = "Resize down" },
+    { "<C-A-k>", split("resize_up"), desc = "Resize up" },
+    { "<C-A-l>", split("resize_right"), desc = "Resize right" },
   },
 }
