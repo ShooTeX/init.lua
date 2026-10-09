@@ -1,49 +1,61 @@
 return {
-  "NickvanDyke/opencode.nvim",
-  enabled = false,
+  "nickjvandyke/opencode.nvim",
+  version = "*",
   dependencies = {
-    -- Recommended for `ask()` and `select()`.
-    -- Required for `toggle()`.
     { "folke/snacks.nvim", opts = { input = {}, picker = {} } },
   },
   config = function()
-    vim.g.opencode_opts = {
-      -- Your configuration, if any — see `lua/opencode/config.lua`
-    }
-
-    -- Required for `vim.g.opencode_opts.auto_reload`
+    vim.g.opencode_opts = {}
     vim.opt.autoread = true
-
-    -- Recommended/example keymaps
-    vim.keymap.set({ "n", "x" }, "<leader>aq", function()
-      require("opencode").ask("@this: ", { submit = true })
-    end, { desc = "Ask about this" })
-    vim.keymap.set({ "n", "x" }, "<leader>as", function()
-      require("opencode").select()
-    end, { desc = "Select prompt" })
-    vim.keymap.set({ "n", "x" }, "<leader>ak", function()
-      require("opencode").prompt("@this")
-    end, { desc = "Add this" })
-    vim.keymap.set("n", "<leader>aa", function()
-      require("opencode").toggle()
-    end, { desc = "Toggle embedded" })
-    vim.keymap.set("n", "<leader>ac", function()
-      require("opencode").command()
-    end, { desc = "Select command" })
-    vim.keymap.set("n", "<leader>an", function()
-      require("opencode").command("session_new")
-    end, { desc = "New session" })
-    vim.keymap.set("n", "<leader>ai", function()
-      require("opencode").command("session_interrupt")
-    end, { desc = "Interrupt session" })
-    vim.keymap.set("n", "<leader>aA", function()
-      require("opencode").command("agent_cycle")
-    end, { desc = "Cycle selected agent" })
-    vim.keymap.set("n", "<S-C-u>", function()
-      require("opencode").command("messages_half_page_up")
-    end, { desc = "Messages half page up" })
-    vim.keymap.set("n", "<S-C-d>", function()
-      require("opencode").command("messages_half_page_down")
-    end, { desc = "Messages half page down" })
   end,
+  keys = {
+    { "<leader>o", nil, desc = "+opencode" },
+    {
+      "<leader>oa",
+      function()
+        require("opencode").ask("@this: ")
+      end,
+      mode = { "n", "x" },
+      desc = "Ask",
+    },
+    {
+      "<leader>os",
+      function()
+        require("opencode").select()
+      end,
+      mode = { "n", "x" },
+      desc = "Select",
+    },
+    {
+      "<leader>oo",
+      function()
+        return require("opencode").operator("@this ")
+      end,
+      mode = { "n", "x" },
+      expr = true,
+      desc = "Append range",
+    },
+    {
+      "<leader>ol",
+      function()
+        return require("opencode").operator("@this ") .. "_"
+      end,
+      expr = true,
+      desc = "Append line",
+    },
+    {
+      "<leader>ou",
+      function()
+        require("opencode").command("session.half.page.up")
+      end,
+      desc = "Scroll up",
+    },
+    {
+      "<leader>od",
+      function()
+        require("opencode").command("session.half.page.down")
+      end,
+      desc = "Scroll down",
+    },
+  },
 }
