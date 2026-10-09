@@ -21,14 +21,49 @@ local function send_to_agent()
   end
   vim.fn.system({ "tmux", "load-buffer", "-b", "review", "-" }, markdown)
   vim.fn.system({ "tmux", "paste-buffer", "-p", "-d", "-b", "review", "-t", pane })
+  vim.fn.system({ "tmux", "select-pane", "-t", pane })
   vim.notify("Sent review to agent pane " .. pane, vim.log.levels.INFO, { title = "review.nvim" })
 end
+
+local function set_zoom(zoomed)
+  if not vim.env.TMUX_PANE then
+    return
+  end
+  local flag = zoomed and "0" or "1"
+  vim.fn.system({
+    "tmux",
+    "if",
+    "-F",
+    "-t",
+    vim.env.TMUX_PANE,
+    "#{==:#{window_zoomed_flag}," .. flag .. "}",
+    "resize-pane -Z -t " .. vim.env.TMUX_PANE,
+  })
+end
+
+local group = vim.api.nvim_create_augroup("review_tmux_zoom", { clear = true })
+
+vim.api.nvim_create_autocmd("User", {
+  group = group,
+  pattern = "CodeDiffOpen",
+  callback = function()
+    set_zoom(true)
+  end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+  group = group,
+  pattern = "CodeDiffClose",
+  callback = function()
+    set_zoom(false)
+  end,
+})
 
 return {
   "georgeguimaraes/review.nvim",
   version = "*",
   dependencies = {
-    "esmuellert/codediff.nvim",
+    { "esmuellert/codediff.nvim", opts = { diff = { layout = "inline" } } },
     "MunifTanjim/nui.nvim",
   },
   event = "VeryLazy",
