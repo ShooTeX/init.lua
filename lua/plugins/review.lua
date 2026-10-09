@@ -51,6 +51,33 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
+local function rebind_when_loaded(tabpage, attempts)
+  local sess = require("codediff.ui.lifecycle").get_session(tabpage)
+  if not sess then
+    return
+  end
+  if sess.refresh and sess.refresh.loading and attempts > 0 then
+    vim.defer_fn(function()
+      rebind_when_loaded(tabpage, attempts - 1)
+    end, 50)
+    return
+  end
+  if vim.api.nvim_get_current_tabpage() == tabpage then
+    require("review")._on_file_select()
+  end
+end
+
+vim.api.nvim_create_autocmd("User", {
+  group = group,
+  pattern = "CodeDiffFileSelect",
+  callback = function()
+    local tabpage = vim.api.nvim_get_current_tabpage()
+    vim.defer_fn(function()
+      rebind_when_loaded(tabpage, 40)
+    end, 50)
+  end,
+})
+
 vim.api.nvim_create_autocmd("User", {
   group = group,
   pattern = "CodeDiffClose",
